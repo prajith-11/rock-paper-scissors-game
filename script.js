@@ -18,7 +18,6 @@ scissors.addEventListener(
 )
 
 // generating computer choice
-let CChoice = getComputerChoice();
 function getComputerChoice(){
     choices = ["Rock","Paper","Scissors"];
     return choices[Math.floor(Math.random()*3)];
@@ -29,6 +28,7 @@ const displayChoice = document.createElement("div");
 
 // Defining game
 function playGame(UChoice){
+    let CChoice = getComputerChoice();
     displayChoice.innerHTML = `<p>User Choice = ${UChoice}</p><p>Computer Choice = ${CChoice}</p>`;
     home.appendChild(displayChoice);
     
@@ -39,15 +39,32 @@ function playGame(UChoice){
     else uScore++;
     displayScore.innerHTML = `<p>User score = ${uScore}</p><p>Computer score = ${cScore}</p>`;
     home.appendChild(displayScore);
-    if(uScore+cScore>5){
+    if(uScore+cScore>=5){
         const win = document.createElement("div");
         if(uScore>cScore) {win.textContent = "User Wins!";}
         else if(uScore<cScore) {win.textContent = "Computer Wins!";}
         else win.textContent = "Game Drawn";
         home.appendChild(win);
-        uScore = 0;
-        cScore = 0;
-        home.removeChild(displayScore);
-        home.removeChild(displayChoice);
+
+        // Creating a button to play again
+        const playAgain = document.createElement("button");
+        playAgain.textContent = "Play Again?";
+        home.appendChild(playAgain);
+        document.querySelectorAll("#rock,#paper,#scissors").forEach(
+            btn => btn.disabled = true
+        );
+        playAgain.addEventListener(
+            "click", ()=> {
+                home.removeChild(win);
+                home.removeChild(displayScore);
+                home.removeChild(displayChoice);
+                uScore = 0;
+                cScore = 0;
+                document.querySelectorAll("#rock,#paper,#scissors").forEach(
+                    btn => btn.disabled = false
+                );
+                home.removeChild(playAgain);
+            },
+        )
     }
 }

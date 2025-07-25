@@ -1,7 +1,11 @@
-/* button{
-    color: black;
-    background-color: blue;
-} */
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    margin: 20px;
+}
 
 #rock{
     color: black;
