@@ -1,0 +1,24 @@
+/* button{
+    color: black;
+    background-color: blue;
+} */
+
+#rock{
+    color: black;
+    background-color: white;
+}
+#paper{
+    color: white;
+    background-color: black;
+}
+#scissors{
+    color: grey;
+    background-color: aliceblue;
+}
+
+.userS{
+    color: blue;
+}
+.computerS{
+    color: red;
+}
