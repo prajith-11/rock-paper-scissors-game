@@ -39,11 +39,10 @@ function playGame(UChoice){
     else uScore++;
     displayScore.innerHTML = `<p>User score = ${uScore}</p><p>Computer score = ${cScore}</p>`;
     home.appendChild(displayScore);
-    if(uScore+cScore>=5){
+    if(uScore==5 || cScore==5){
         const win = document.createElement("div");
         if(uScore>cScore) {win.textContent = "User Wins!";}
         else if(uScore<cScore) {win.textContent = "Computer Wins!";}
-        else win.textContent = "Game Drawn";
         home.appendChild(win);
 
         // Creating a button to play again
